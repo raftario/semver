@@ -83,6 +83,9 @@ namespace version {
 
 		Semver200_version(const std::string& v)
 			: Basic_version{ v, Semver200_parser(), Semver200_comparator(), Semver200_modifier() } {}
+			
+		Semver200_version(const Version_data& v)
+			: Basic_version{ v, Semver200_parser(), Semver200_comparator(), Semver200_modifier() } {}
 	};
 
 }
