@@ -154,6 +154,8 @@ namespace version {
 		const std::string prerelease() const; ///< Get prerelease version string.
 		const std::string build() const; ///< Get build version string.
 
+		Version_data data() const;
+
 		 /// Return a copy of version with major component set to specified value.
 		Basic_version set_major(const int) const;
 

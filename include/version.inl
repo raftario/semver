@@ -94,6 +94,11 @@ namespace version {
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
+	Version_data Basic_version<Parser, Comparator, Modifier>::data() const {
+		return ver_;
+	}
+
+	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::set_major(const int m) const {
 		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_major(ver_, m), parser_, comparator_, modifier_);
 	}
