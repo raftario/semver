@@ -134,13 +134,13 @@ namespace version {
 	class Basic_version {
 	public:
 		/// Construct Basic_version object using Parser object to parse default ("0.0.0") version string, Comparator for comparison and Modifier for modification.
-		Basic_version(Parser, Comparator, Modifier);
+		Basic_version();
 
 		/// Construct Basic_version object using Parser to parse supplied version string, Comparator for comparison and Modifier for modification.
-		Basic_version(const std::string&, Parser, Comparator, Modifier);
+		Basic_version(const std::string&);
 
 		/// Construct Basic_version object using supplied Version_data, Parser, Comparator and Modifier objects.
-		Basic_version(const Version_data&, Parser, Comparator, Modifier);
+		Basic_version(const Version_data&);
 
 		/// Construct Basic_version by copying data from another one.
 		Basic_version(const Basic_version&);

@@ -46,16 +46,16 @@ namespace version {
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
-	Basic_version<Parser, Comparator, Modifier>::Basic_version(Parser p, Comparator c, Modifier m)
-		: parser_(p), comparator_(c), modifier_(m), ver_({0,0,0,{},{}}) {}
+	Basic_version<Parser, Comparator, Modifier>::Basic_version()
+		: parser_({}), comparator_({}), modifier_({}), ver_({0,0,0,{},{}}) {}
 
 	template<typename Parser, typename Comparator, typename Modifier>
-	Basic_version<Parser, Comparator, Modifier>::Basic_version(const std::string& v, Parser p, Comparator c, Modifier m)
-		: parser_(p), comparator_(c), modifier_(m), ver_(parser_.parse(v)) {}
+	Basic_version<Parser, Comparator, Modifier>::Basic_version(const std::string& v)
+		: parser_({}), comparator_({}), modifier_({}), ver_(parser_.parse(v)) {}
 
 	template<typename Parser, typename Comparator, typename Modifier>
-	Basic_version<Parser, Comparator, Modifier>::Basic_version(const Version_data& v, Parser p, Comparator c, Modifier m)
-		: parser_(p), comparator_(c), modifier_(m), ver_(v) {}
+	Basic_version<Parser, Comparator, Modifier>::Basic_version(const Version_data& v)
+		: parser_({}), comparator_({}), modifier_({}), ver_(v) {}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier>::Basic_version(const Basic_version<Parser, Comparator, Modifier>&) = default;
@@ -100,58 +100,58 @@ namespace version {
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::set_major(const int m) const {
-		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_major(ver_, m), parser_, comparator_, modifier_);
+		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_major(ver_, m));
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::set_minor(const int m) const {
-		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_minor(ver_, m), parser_, comparator_, modifier_);
+		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_minor(ver_, m));
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::set_patch(const int p) const {
-		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_patch(ver_, p), parser_, comparator_, modifier_);
+		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_patch(ver_, p));
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::set_prerelease(const std::string& pr) const {
 		auto vd = parser_.parse("0.0.0-" + pr);
-		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_prerelease(ver_, vd.prerelease_ids), parser_, comparator_, modifier_);
+		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_prerelease(ver_, vd.prerelease_ids));
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::set_build(const std::string& b) const {
 		auto vd = parser_.parse("0.0.0+" + b);
-		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_build(ver_, vd.build_ids), parser_, comparator_, modifier_);
+		return Basic_version<Parser, Comparator, Modifier>(modifier_.set_build(ver_, vd.build_ids));
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::reset_major(const int m) const {
-		return Basic_version<Parser, Comparator, Modifier>(modifier_.reset_major(ver_, m), parser_, comparator_, modifier_);
+		return Basic_version<Parser, Comparator, Modifier>(modifier_.reset_major(ver_, m));
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::reset_minor(const int m) const {
-		return Basic_version<Parser, Comparator, Modifier>(modifier_.reset_minor(ver_, m), parser_, comparator_, modifier_);
+		return Basic_version<Parser, Comparator, Modifier>(modifier_.reset_minor(ver_, m));
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::reset_patch(const int p) const {
-		return Basic_version<Parser, Comparator, Modifier>(modifier_.reset_patch(ver_, p), parser_, comparator_, modifier_);
+		return Basic_version<Parser, Comparator, Modifier>(modifier_.reset_patch(ver_, p));
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::reset_prerelease(const std::string& pr) const {
 		std::string ver = "0.0.0-" + pr;
 		auto vd = parser_.parse(ver);
-		return Basic_version<Parser, Comparator, Modifier>(modifier_.reset_prerelease(ver_, vd.prerelease_ids), parser_, comparator_, modifier_);
+		return Basic_version<Parser, Comparator, Modifier>(modifier_.reset_prerelease(ver_, vd.prerelease_ids));
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier> Basic_version<Parser, Comparator, Modifier>::reset_build(const std::string& b) const {
 		std::string ver = "0.0.0+" + b;
 		auto vd = parser_.parse(ver);
-		return Basic_version<Parser, Comparator, Modifier>(modifier_.reset_build(ver_, vd.build_ids), parser_, comparator_, modifier_);
+		return Basic_version<Parser, Comparator, Modifier>(modifier_.reset_build(ver_, vd.build_ids));
 	}
 
 	template<typename Parser, typename Comparator, typename Modifier>
