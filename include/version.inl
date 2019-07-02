@@ -47,7 +47,7 @@ namespace version {
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier>::Basic_version(Parser p, Comparator c, Modifier m)
-		: parser_(p), comparator_(c), modifier_(m), ver_(parser_.parse("0.0.0")) {}
+		: parser_(p), comparator_(c), modifier_(m), ver_({0,0,0,{},{}}) {}
 
 	template<typename Parser, typename Comparator, typename Modifier>
 	Basic_version<Parser, Comparator, Modifier>::Basic_version(const std::string& v, Parser p, Comparator c, Modifier m)
